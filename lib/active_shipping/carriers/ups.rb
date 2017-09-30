@@ -467,6 +467,7 @@ module ActiveShipping
                 xml.InvoiceLineTotal do
                   total_value = packages.inject(0) {|sum, package| sum + (package.value || 0)}
                   xml.MonetaryValue(total_value)
+                  xml.CurrencyCode(options[:currency_code])
                 end
               end
 
@@ -590,11 +591,19 @@ module ActiveShipping
             xml.TermsOfShipment(options[:terms_of_shipment])
           end
 
+          if options[:comments]
+            xml.Comments(options[:comments])
+          end
+
+          if options[:declaration_statement]
+            xml.DeclarationStatement(options[:declaration_statement])
+          end
+
           packages.each do |package|
             xml.Product do |xml|
               xml.Description(package.options[:description])
-              xml.CommodityCode(package.options[:commodity_code])
-              xml.OriginCountryCode(origin.country_code(:alpha2))
+              # xml.CommodityCode(package.options[:commodity_code])
+              xml.OriginCountryCode(options[:manufacture_country_code])
               xml.Unit do |xml|
                 xml.Value(package.value / (package.options[:item_count] || 1))
                 xml.Number((package.options[:item_count] || 1))
