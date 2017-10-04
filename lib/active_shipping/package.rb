@@ -37,7 +37,7 @@ module ActiveShipping #:nodoc:
         process_dimensions
       end
 
-      @value = Package.cents_from(options[:value])
+      @value = options[:value]
       @currency = options[:currency] || (options[:value].currency if options[:value].respond_to?(:currency))
       @cylinder = (options[:cylinder] || options[:tube]) ? true : false
       @gift = options[:gift] ? true : false
