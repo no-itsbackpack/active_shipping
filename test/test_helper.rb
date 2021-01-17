@@ -2,7 +2,8 @@ require 'bundler/setup'
 
 require 'minitest/autorun'
 require "minitest/reporters"
-require 'mocha/mini_test'
+# require 'mocha/mini_test'
+require 'mocha/minitest'
 require 'timecop'
 require 'business_time'
 

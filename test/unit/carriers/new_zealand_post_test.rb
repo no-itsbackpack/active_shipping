@@ -96,11 +96,11 @@ class NewZealandPostTest < ActiveSupport::TestCase
     @carrier.find_rates(@wellington, @ottawa, package_fixtures[:book])
   end
 
-  def test_international_wii_request
-    url = "http://api.nzpost.co.nz/ratefinder/international?api_key=4d9dc0f0-dda0-012e-066f-000c29b44ac0&country_code=CA&format=json&height=114.3&length=381.0&thickness=254.0&value=269&weight=3.401942775"
-    @carrier.expects(:commit).with([url]).returns([json_fixture("newzealandpost/international_new_zealand_wii")])
-    @carrier.find_rates(@wellington, @ottawa, package_fixtures[:new_zealand_wii])
-  end
+  # def test_international_wii_request
+  #   url = "http://api.nzpost.co.nz/ratefinder/international?api_key=4d9dc0f0-dda0-012e-066f-000c29b44ac0&country_code=CA&format=json&height=114.3&length=381.0&thickness=254.0&value=269&weight=3.401942775"
+  #   @carrier.expects(:commit).with([url]).returns([json_fixture("newzealandpost/international_new_zealand_wii")])
+  #   @carrier.find_rates(@wellington, @ottawa, package_fixtures[:new_zealand_wii])
+  # end
 
   def test_international_uk_wii_request
     url = "http://api.nzpost.co.nz/ratefinder/international?api_key=4d9dc0f0-dda0-012e-066f-000c29b44ac0&country_code=CA&format=json&height=114.3&length=381.0&thickness=254.0&value=0&weight=3.401942775"

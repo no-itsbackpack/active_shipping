@@ -52,7 +52,7 @@ class PackageTest < ActiveSupport::TestCase
   test "#initialize with currency cents" do
     @package = Package.new(@weight, @dimensions, value: money)
     assert_equal @currency, @package.currency
-    assert_equal @value, @package.value
+    assert_equal @value, @package.value.cents
   end
 
   test "#initialize sorts the passed in dimensions" do
